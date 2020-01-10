@@ -1,8 +1,7 @@
 Name:           meanwhile
 Version:        1.1.0
-Release:        10%{?dist}
+Release:        12%{?dist}
 Summary:        Lotus Sametime Community Client library
-Group:          Applications/Internet
 License:        LGPLv2+
 URL:            http://%{name}.sourceforge.net
 
@@ -33,7 +32,6 @@ Identity Resolution, and File Transfer.
 
 %package devel
 Summary:        Header files, libraries and development documentation for %{name}
-Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       glib2-devel
 
@@ -44,7 +42,6 @@ will need to install %{name}-devel.
 
 %package doc
 Summary:        Documentation for the %{name} library
-Group:          Applications/Internet
 License:        GFDL
 
 %description doc
@@ -71,29 +68,29 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}-doc-%{version}/latex \
     %{buildroot}%{_libdir}/lib%{name}.a \
     %{buildroot}%{_libdir}/lib%{name}.la
 
-%clean
-rm -rf %{buildroot}
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root, -)
 %doc AUTHORS ChangeLog COPYING README TODO LICENSE NEWS
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-, root, root, -)
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files doc
-%defattr(-, root, root, -)
 %{_datadir}/doc/%{name}-doc-%{version}/
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.1.0-12
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.1.0-11
+- Mass rebuild 2013-12-27
+
 * Tue Mar 26 2013 Simone Caronni <negativo17@gmail.com> - 1.1.0-10
 - Added aarch64 patch.
 
